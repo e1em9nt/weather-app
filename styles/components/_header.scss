@@ -1,0 +1,75 @@
+/* SEARCH BAR COMPONENT*/
+.search-bar__input {
+  font-size: 1rem;
+  color: var(--fc);
+  font-family: "Roboto", sans-serif;
+
+  padding: 0.4rem 1rem;
+  border: 2px solid var(--fc-muted);
+  border-radius: var(--fs-base);
+  background: transparent;
+
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: var(--fc);
+  }
+  &:focus {
+    outline: none;
+    border-color: var(--fc);
+  }
+  &::placeholder {
+    color: var(--fc-muted);
+  }
+}
+
+/* THEME TOGGLE COMPONENT*/
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  user-select: none;
+
+  &__icon {
+    flex: 0 0 auto;
+  }
+
+  &__track {
+    position: relative;
+    width: 5rem;
+    height: 2.6rem;
+    border-radius: 9999px;
+    background: transparent;
+    border: 2px solid var(--fc-muted);
+    transition: background 0.2s ease, border-color 0.2s ease;
+    outline-offset: 2px;
+    flex: 0 0 auto;
+    box-sizing: border-box;
+  }
+
+  &__knob {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: var(--fs-lg);
+    height: var(--fs-lg);
+    border-radius: 50%;
+    background: var(--fc);
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+
+    // dark mode position: 50 - 20 - 1*7 = 23px
+    &--dark {
+      transform: translateX(23px);
+    }
+  }
+
+  &__input {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+}

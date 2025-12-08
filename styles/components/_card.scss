@@ -1,0 +1,57 @@
+.weather-card {
+  background-color: var(--bg-grey);
+  border-radius: var(--fs-xl);
+  box-shadow: var(--shadow);
+  width: 425px;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: space-between;
+  padding: var(--fs-xl);
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  &__city {
+    font-size: var(--fs-xl);
+    filter: drop-shadow(var(--drop-shadow));
+    margin-bottom: 1rem;
+  }
+
+  &__condition {
+    color: var(--fc-muted);
+  }
+
+  &__stat {
+    margin: 0.8rem 0rem;
+
+    &--label {
+      color: var(--fc-muted);
+      font-weight: 100;
+    }
+  }
+
+  &__main {
+    align-self: center;
+  }
+
+  &__icon--wrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__temperature {
+    display: flex;
+    gap: 3px;
+    font-size: var(--fs-xl);
+    font-weight: 700;
+    filter: drop-shadow(var(--drop-shadow));
+
+    &--value {
+      font-size: var(--fs-2xl);
+    }
+  }
+}

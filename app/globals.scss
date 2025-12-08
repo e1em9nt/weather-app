@@ -1,0 +1,34 @@
+@use "../styles/fonts";
+@use "../styles/variables";
+@use "../styles/components/header";
+@use "../styles/components/card-list";
+@use "../styles/components/card";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: var(--fs-base);
+  background-color: var(--bg);
+  color: var(--fc);
+}
+header {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--fs-2xl);
+  padding: var(--fs-xl);
+  box-shadow: var(--shadow);
+}
+main {
+  padding: var(--fs-xl);
+}
