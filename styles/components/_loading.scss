@@ -1,0 +1,23 @@
+.weather__loading {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--bg-muted);
+
+  &--spinner {
+    width: clamp(30px, 50px, 70px);
+    height: clamp(30px, 50px, 70px);
+
+    border: 7px solid var(--fc-muted);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+
+    display: inline-block;
+    animation: rotation 1s linear infinite;
+  }
+}

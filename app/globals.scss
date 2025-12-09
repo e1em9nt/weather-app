@@ -2,7 +2,9 @@
 @use "../styles/variables";
 @use "../styles/components/header";
 @use "../styles/components/card-list";
+@use "../styles/components/loading";
 @use "../styles/components/card";
+@use "../styles/components/update-btn";
 
 *,
 *::before,
@@ -22,13 +24,11 @@ body {
   background-color: var(--bg);
   color: var(--fc);
 }
-header {
-  display: flex;
-  justify-content: flex-end;
-  gap: var(--fs-2xl);
-  padding: var(--fs-xl);
-  box-shadow: var(--shadow);
-}
+
 main {
-  padding: var(--fs-xl);
+  padding: clamp(1.5em, 4vw, 4em);
+}
+
+ul {
+  list-style: none;
 }

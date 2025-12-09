@@ -1,7 +1,9 @@
 :root {
   --bg: #fff;
   --bg-grey: rgba(182, 182, 195, 0.6);
+  --bg-muted: rgba(225, 225, 225, 0.05);
 
+  --fs-xs: 1.2rem;
   --fs-base: 1.6rem;
   --fs-s: 1.8rem;
   --fs-lg: 2rem;
@@ -13,11 +15,13 @@
 
   --fc: #000;
   --fc-muted: rgba(0, 0, 0, 0.8);
+  --fc-orange: rgba(248, 126, 33, 0.85);
 }
 
 [data-theme="dark"] {
   --bg: #0f171a;
   --bg-grey: rgba(71, 85, 105, 0.6);
+  --bg-muted: rgba(15, 23, 26, 0.05);
 
   --fs-base: 1.6rem;
   --fs-lg: 1.8rem;

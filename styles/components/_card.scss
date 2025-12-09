@@ -1,13 +1,25 @@
-.weather-card {
+.card {
   background-color: var(--bg-grey);
   border-radius: var(--fs-xl);
   box-shadow: var(--shadow);
-  width: 425px;
+  padding: var(--fs-xl);
+}
+
+/* SUMMARY CARD */
+.summary-card {
+  width: clamp(18em, 80vw, 26.5em);
   cursor: pointer;
 
+  position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  padding: var(--fs-xl);
+  gap: 0.75em;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+  }
 
   &__info {
     display: flex;
@@ -16,31 +28,63 @@
   }
 
   &__city {
-    font-size: var(--fs-xl);
+    font-size: clamp(1.4em, 1em + 1vw, 2.2em);
     filter: drop-shadow(var(--drop-shadow));
     margin-bottom: 1rem;
   }
 
   &__condition {
     color: var(--fc-muted);
+    font-size: clamp(0.9em, 0.8em + 0.3vw, 1.1em);
   }
 
   &__stat {
-    margin: 0.8rem 0rem;
+    margin: clamp(0.4em, 0.6vw, 0.8em) 0;
 
     &--label {
       color: var(--fc-muted);
       font-weight: 100;
+      font-size: clamp(0.9em, 0.8em + 0.3vw, 1.1em);
     }
   }
 
   &__main {
-    align-self: center;
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  &__btn {
+    color: var(--fc-orange);
+    font-family: "Roboto", sans-serif;
+
+    &--wrapper {
+      border: 2px solid var(--fc-orange);
+      border-radius: 40%;
+      padding: 3px 9px;
+      width: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      position: absolute;
+      top: 1rem;
+      right: 1.3rem;
+    }
+
+    &--close {
+      border: none;
+      background-color: transparent;
+      outline: none;
+      font-size: var(--fs-xs);
+    }
   }
 
   &__icon--wrapper {
     display: flex;
     justify-content: flex-end;
+    filter: drop-shadow(0 2px 1rem var(--fc));
   }
 
   &__temperature {
@@ -52,6 +96,109 @@
 
     &--value {
       font-size: var(--fs-2xl);
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.2em;
+  }
+}
+
+/* DETAILED CARD */
+
+.detailed-card {
+  display: flex;
+  gap: clamp(1.5em, 4vw, 3.5em);
+
+  &__header {
+    width: clamp(12em, 40vw, 25em);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.25em, 0.5vh, 0.5em);
+  }
+
+  &__city {
+    margin-bottom: clamp(1.5em, 4vh, 3em);
+    font-size: clamp(1.6em, 1.4em + 1vw, 2.8em);
+  }
+
+  &__time {
+    font-size: clamp(2em, 1.4em + 2vw, 3em);
+  }
+
+  &__main {
+    width: clamp(20em, 60vw, 40em);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: clamp(1em, 2vw, 2em);
+  }
+
+  &__temperature {
+    font-size: clamp(2.2em, 1.6em + 2vw, 3.2em);
+    font-weight: 700;
+  }
+
+  &__label {
+    color: var(--fc-muted);
+    font-size: clamp(0.9em, 0.8em + 0.3vw, 1.1em);
+  }
+
+  &__value {
+    font-weight: 500;
+    font-size: clamp(0.95em, 0.85em + 0.3vw, 1.15em);
+  }
+
+  &__feels-like {
+    margin-bottom: clamp(1em, 2vh, 1.8em);
+  }
+
+  &__list--item:not(:last-child) {
+    margin-bottom: clamp(0.6em, 1vh, 1em);
+  }
+  &__column:not(:last-child) {
+    margin-bottom: clamp(1em, 2vh, 2em);
+  }
+  &__column--secondary {
+    text-align: center;
+    align-self: center;
+  }
+
+  &__stats {
+    align-self: center;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 3em;
+  }
+}
+@media (max-width: 48em) {
+  .detailed-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    &__header {
+      width: 100%;
+    }
+
+    &__main {
+      width: 100%;
+      justify-content: center;
+    }
+
+    &__column {
+      width: 100%;
+    }
+    &__icon {
+      width: 75px;
+      height: 75px;
     }
   }
 }

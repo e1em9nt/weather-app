@@ -2,12 +2,8 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { WEATHER_API } from "@/lib/constants";
 
-export async function GET(
-  request: NextRequest
-  /* { params }: { params: Promise<{ cityName: string }> } */
-) {
+export async function GET(request: NextRequest) {
   const apiKey = process.env.WEATHER_API_KEY;
-  //const { cityName } = await params;
   const { searchParams } = new URL(request.url);
   const cityName = searchParams.get("cityName");
 
@@ -19,14 +15,17 @@ export async function GET(
 
   const response = await fetch(
     `${WEATHER_API}?q=${cityName}&appid=${apiKey}&units=metric`
-    /* , { headers: { Authorization: `Bearer ${apiKey}` } } */
   );
 
-  if (!response.ok)
+  if (!response.ok) {
+    if (response.status === 404) {
+      return NextResponse.json({ error: "City not found" }, { status: 404 });
+    }
     return NextResponse.json(
       { error: "Some error" },
       { status: response.status }
     );
+  }
 
   const weather = await response.json();
 

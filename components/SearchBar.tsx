@@ -1,32 +1,45 @@
 "use client";
 
-/**
- * Props for the SearchBar component
- *
- * @interface SearchBarProps
- */
+import { useRef } from "react";
+import SearchIcon from "./SearchIcon";
+
 interface SearchBarProps {
   value: string;
   onChange: (value: string) => void;
+  onSubmit?: () => void;
 }
 
-/**
- * SearchBar renders a labeled search input for finding weather by city name
- *
- * @param props.value - controlled value of the search input
- * @param props.onChange - handler to call with the new input value
- * @returns {JSX.Element}
- */
-export default function SearchBar({ value, onChange }: SearchBarProps) {
+export default function SearchBar({
+  value,
+  onChange,
+  onSubmit,
+}: SearchBarProps) {
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
   return (
-    <input
-      className="search-bar__input"
-      type="search"
-      placeholder="City name..."
-      pattern="[a-zA-Z ,]+"
-      title="Only letters, spaces, and commas are allowed"
-      value={value}
-      onChange={(event) => onChange(event.target.value)}
-    />
+    <form
+      className="search-bar"
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSubmit?.();
+      }}
+    >
+      <input
+        className="search-bar__input"
+        type="search"
+        ref={inputRef}
+        placeholder="City name..."
+        pattern="[a-zA-Z ,]+"
+        title="Only letters, spaces, and commas are allowed"
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+      />
+      <SearchIcon
+        className="search-bar__icon"
+        onClick={() => inputRef.current?.focus()}
+        role="button"
+        aria-label="Focus search input"
+      />
+    </form>
   );
 }

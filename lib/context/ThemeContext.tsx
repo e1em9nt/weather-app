@@ -6,8 +6,8 @@ import {
   useCallback,
   useContext,
   useEffect,
-  useState,
 } from "react";
+import { useLocalStorageState } from "../hooks/useLocalStorage";
 
 type Theme = "light" | "dark";
 
@@ -19,21 +19,17 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme | null>(null);
+  const [theme, setTheme] = useLocalStorageState<Theme>("light", "theme");
 
   useEffect(() => {
-    const stored = localStorage.getItem("theme");
-    setTheme(stored as Theme);
-  }, []);
+    if (!theme) return;
 
-  useEffect(() => {
-    localStorage.setItem("theme", theme as Theme);
     document.documentElement.setAttribute("data-theme", theme as Theme);
   }, [theme]);
 
   const toggleThemeMode = useCallback(() => {
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
-  }, []);
+  }, [setTheme]);
 
   return (
     <ThemeContext.Provider
