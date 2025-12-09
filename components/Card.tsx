@@ -11,7 +11,7 @@ import { formatDate, formatTime } from "@/lib/formatters";
 
 type CardVariant = "summary" | "detailed";
 
-interface Weather {
+export interface Weather {
   name: string;
   main: {
     temp: number;
@@ -55,7 +55,14 @@ export default function Card({
         `/api/weather?cityName=${encodeURIComponent(cityName)}`
       );
 
-      if (!response.ok) throw new Error("Failed to fetch weather");
+      if (!response.ok) {
+        if (response.status === 404) {
+          onRemove?.();
+          return;
+        }
+
+        throw new Error("Failed to fetch weather");
+      }
 
       const fetchedData = (await response.json()) as Weather;
       setData(fetchedData);
@@ -116,7 +123,7 @@ export default function Card({
 
           <div className="summary-card__main">
             {onRemove && (
-              <div className="summary-card__btn--wrapper">
+              <div className="summary-card__btn-wrapper">
                 <button
                   className="summary-card__btn summary-card__btn--close"
                   onClick={(e) => {
@@ -129,7 +136,7 @@ export default function Card({
               </div>
             )}
 
-            <div className="summary-card__icon--wrapper">
+            <div className="summary-card__icon-wrapper">
               <Image
                 src={iconUrl}
                 alt="weather icon"
@@ -200,7 +207,7 @@ export default function Card({
           </div>
 
           <div className="detailed-card__column detailed-card__column--secondary">
-            <div className="detailed-card__icon--wrapper">
+            <div className="detailed-card__icon-wrapper">
               <Image
                 src={iconUrl}
                 alt="weather icon"

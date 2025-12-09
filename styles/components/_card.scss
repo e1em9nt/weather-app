@@ -58,30 +58,27 @@
   &__btn {
     color: var(--fc-orange);
     font-family: "Roboto", sans-serif;
+    border: 2px solid var(--fc-orange);
+    border-radius: 40%;
+    padding: 3px 9px;
+    width: 2rem;
 
-    &--wrapper {
-      border: 2px solid var(--fc-orange);
-      border-radius: 40%;
-      padding: 3px 9px;
-      width: 2rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    background-color: transparent;
+    outline: none;
+    font-size: var(--fs-xs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 
+    &-wrapper {
       position: absolute;
       top: 1rem;
       right: 1.3rem;
     }
-
-    &--close {
-      border: none;
-      background-color: transparent;
-      outline: none;
-      font-size: var(--fs-xs);
-    }
   }
 
-  &__icon--wrapper {
+  &__icon-wrapper {
     display: flex;
     justify-content: flex-end;
     filter: drop-shadow(0 2px 1rem var(--fc));
