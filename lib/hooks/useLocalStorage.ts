@@ -19,6 +19,7 @@ export function useLocalStorageState<T>(
     } catch {
       setValue(initialState);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key]);
 
   // stable setter
